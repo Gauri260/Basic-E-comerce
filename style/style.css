@@ -1,0 +1,209 @@
+:root {
+  --bg-light: linear-gradient(to bottom right, #f0f0f0, #d9e4f5);
+  --bg-dark: linear-gradient(to bottom right, #1a1a2e, #16213e);
+  --text-light: #1f1f1f;
+  --text-dark: #f5f5f5;
+  --card-light: rgba(255, 255, 255, 0.6);
+  --card-dark: rgba(30, 30, 30, 0.5);
+  --accent: #6c63ff;
+  --accent-hover: #5a54e3;
+  --glass-blur: 15px;
+  --glow: 0 0 10px rgba(108, 99, 255, 0.6);
+}
+
+[data-theme="light"] {
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+  --card: var(--card-light);
+}
+
+[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --card: var(--card-dark);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.5s ease, color 0.5s ease;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Style */
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Container & Forms */
+.container {
+  max-width: 350px;
+  margin: 3rem auto;
+  padding: 2rem;
+}
+.container input,
+.container button {
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.container button {
+  background: var(--accent);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.container button:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+  box-shadow: var(--glow);
+}
+
+/* Navbar */
+.navbar {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+.navbar .logo h1 {
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, #6c63ff, #00dbde);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Theme & Logout Buttons */
+.navbar-actions button {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.navbar-actions button:hover {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+/* Search Bar */
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  padding: 1rem;
+}
+.search-container input,
+.search-container select,
+.search-container button {
+  border-radius: 30px;
+  padding: 12px 20px;
+  border: none;
+  background: white;
+  color: #333;
+  transition: 0.3s ease;
+}
+.search-container button {
+  background: var(--accent);
+  color: white;
+}
+.search-container button:hover {
+  background: var(--accent-hover);
+}
+
+/* Filters & Products */
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.filter-section {
+  flex: 1 1 250px;
+  padding: 1.5rem;
+}
+
+.filter-group label {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Products Grid */
+.product-list {
+  flex: 3 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.product {
+  text-align: center;
+  padding: 1.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(108, 99, 255, 0.25);
+}
+.product img {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+.product button {
+  background: var(--accent);
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+.product button:hover {
+  background: var(--accent-hover);
+}
+
+/* Like Button */
+.like-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  transition: transform 0.2s, color 0.3s;
+}
+.like-btn:hover {
+  transform: scale(1.2);
+  color: #ff4d6d;
+}
+.like-btn.liked {
+  color: #ff4d6d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  .content-container {
+    flex-direction: column;
+  }
+  .search-container {
+    flex-direction: column;
+    width: 100%;
+  }
+}
